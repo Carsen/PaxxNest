@@ -8,8 +8,8 @@ import (
 
 // Interface to define common Package Manager Operations
 type PkgMgrOps interface {
-	ListInstalledPackages() ([]string, error)
-	InstallPackage(name string) error
+	PkgListInstalled() ([]string, error)
+	PkgInstall(name string) error
 }
 
 // Struct for different package managers
@@ -32,7 +32,7 @@ func (m *ManagerList) AddManager(name string, manager PkgMgrOps) {
 func (m *ManagerList) ListPackages() {
 	for name, manager := range m.managers {
 		fmt.Printf("Packages from %s:\n", name)
-		packages, err := manager.ListInstalledPackages()
+		packages, err := manager.PkgListInstalled()
 		if err != nil {
 			log.Fatal(err)
 			continue
@@ -43,9 +43,21 @@ func (m *ManagerList) ListPackages() {
 	}
 }
 
+func (m *ManagerList) InstallPackage(pkg string) ([]string, error){
+	for name, manager := range m.managers {
+		fmt.Printf("Installing %s", pkg, "via manager %s\n" name)
+		output, err := manager.PkgInstall(pkg)
+		if err != nil {
+			log.Fatal(err)
+			return nil, err
+		}
+		return output, nil
+	}
+}
+
 type BrewMan struct{}
 
-func (s BrewMan) ListInstalledPackages() ([]string, error) {
+func (s BrewMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("brew", "list")
 	output, err := cmd.Output()
 	if err != nil {
@@ -54,14 +66,18 @@ func (s BrewMan) ListInstalledPackages() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-func (s BrewMan) InstallPackage(name string) error {
+func (s BrewMan) PkgInstall(name string) ([]string, error) {
 	cmd := exec.Command("brew", "install", name)
-	return cmd.Run()
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
 }
 
 type SnapMan struct{}
 
-func (s SnapMan) ListInstalledPackages() ([]string, error) {
+func (s SnapMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("snap", "list")
 	output, err := cmd.Output()
 	if err != nil {
@@ -70,7 +86,11 @@ func (s SnapMan) ListInstalledPackages() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-func (s SnapMan) InstallPackage(name string) error {
+func (s SnapMan) PkgInstall(name string) ([]string, error) {
 	cmd := exec.Command("snap", "install", name)
-	return cmd.Run()
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
 }

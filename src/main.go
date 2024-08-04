@@ -9,12 +9,24 @@ import (
 )
 
 func main() {
-	switch Login.Login(true) {
-	case true:
-		fmt.Printf("Hello!")
+	for Login.Login() {
+		fmt.Println("Hello!\n")
 		mgr := Manager.NewManager()
 		mgr.AddManager("brew", Manager.BrewMan{})
-		mgr.ListPackages()
+		mgr.AddManager("snap", Manager.SnapMan{})
+
+		fmt.Print("Press 'L' for list, 'I' for install, and 'R' for remove")
+		var choice string
+		fmt.Scanln(&choice)
+
+		if choice == "L" || choice == "l"{
+			Manager.ListInstalledPackages()
+		}
+		if choice == "i" || choice == "I"{
+			var whichpkg string
+			fmt.Scanln(&whichpkg)
+			Manager.InstallPackage(whichpkg)
+		}
 	case false:
 		fmt.Println("Goodbye!")
 		os.Exit(1)
