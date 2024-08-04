@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/Carsen/PaxxNest/Login"
+	"github.com/Carsen/PaxxNest/Manager"
 )
 
 func main() {

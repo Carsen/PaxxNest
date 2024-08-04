@@ -12,19 +12,19 @@ type ManagerList struct {
 }
 //
 // Create new instance of ManagerList struct
-func NewManager() *Manager {
-	return &Manager{
+func NewManager() *ManagerList {
+	return &ManagerList{
 		managers: make(map[string]PkgMgrOps)
 	}
 }
 //
 // Add a manager to ManagerList
-func (m *Manager) AddManager(name string, manager PkgMgrOps) {
+func (m *ManagerList) AddManager(name string, manager PkgMgrOps) {
 	m.managers[name] = manager
 }
 //
 //
-func (m *Manager) ListPackages() {
+func (m *ManagerList) ListPackages() {
 	for name, manager := range m.managers {
 		fmt.Printf("Packages from %s:\n", name)
 		packages, err := manager.ListInstalledPackages()
