@@ -53,3 +53,8 @@ func (s SnapMan) ListInstalledPackages() ([]string, error) {
 	}
 	return []string{string(output)}, nil
 }
+
+func (s SnapMan) InstallPackage(name string) error {
+	cmd := exec.Command("snap", "install", name)
+	return cmd.Run()
+}

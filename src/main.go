@@ -13,7 +13,7 @@ func main() {
 	case true:
 		fmt.Printf("Hello!")
 		mgr := Manager.NewManager()
-		mgr.AddManager("snap", Manager.SnapManager{})
+		mgr.AddManager("snap", Manager.SnapMan{})
 		mgr.ListPackages()
 	case false:
 		fmt.Println("Goodbye!")
