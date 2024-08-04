@@ -82,13 +82,22 @@ func (m *ManagerList) RemovePackage(pack string) {
 		}
 
 		if !installed {
-			fmt.Printf("Package %s is not currently installed.", pack)
+			fmt.Printf("Package '%s' is not currently installed.", pack)
 			return
 		}
 
-		fmt.Printf("Removing '%', via manager '%s'.\n", pack, name)
+		fmt.Printf("Removing '%s', via manager '%s'.\n", pack, name)
 		output, err := manager.PkgInstall(pack)
+		if err != nil {
+			fmt.Printf("Failed to remove '%s' using manager '%s': %v.\n Trying next", pack, name, err)
+			continue
+		}
+
+		fmt.Printf("%s: \n%s\n", pack, output)
+		fmt.Printf("Successfully removed '%s' using manager '%s'.\n", pack, name)
+		return
 	}
+	fmt.Printf("Failed to remove '%s' using all available package managers. \n", pack)
 }
 
 // Integration with HomeBrew Package Manager
