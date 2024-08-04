@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/Carsen/PaxxNest/Login"
 	"github.com/Carsen/PaxxNest/Manager"
@@ -27,9 +26,5 @@ func main() {
 			fmt.Scanln(&whichpkg)
 			mgr.InstallPackage(whichpkg)
 		}
-	}
-	for !Login.Login(true) {
-		fmt.Println("Goodbye!")
-		os.Exit(1)
 	}
 }
