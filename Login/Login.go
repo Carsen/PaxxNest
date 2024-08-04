@@ -18,10 +18,10 @@ func Login(running bool) bool {
 		var answer string
 		fmt.Scanln(&answer)
 
-		if answer == "y" {
+		if answer == "y" || answer == "Y" {
 			i = 5
 			cls()
-		} else if answer == "n" {
+		} else if answer == "n" || answer == "N" {
 			cls()
 			fmt.Println("I'm sorry to see you go so soon. We hope to see you back!")
 			i = -1
@@ -101,7 +101,7 @@ func Login(running bool) bool {
 				}
 			}
 		}
-		if i == 0 {
+		if i == 0 || i == -1 {
 			cls()
 			fmt.Println("Too many tries!")
 			checker = false
