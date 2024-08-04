@@ -43,6 +43,22 @@ func (m *ManagerList) ListPackages() {
 	}
 }
 
+type BrewMan struct{}
+
+func (s BrewMan) ListInstalledPackages() ([]string, error) {
+	cmd := exec.Command("brew", "list")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+func (s BrewMan) InstallPackage(name string) error {
+	cmd := exec.Command("brew", "install", name)
+	return cmd.Run()
+}
+
 type SnapMan struct{}
 
 func (s SnapMan) ListInstalledPackages() ([]string, error) {
