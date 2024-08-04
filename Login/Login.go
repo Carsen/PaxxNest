@@ -11,7 +11,7 @@ import (
 func Login(running bool) bool {
 	var checker bool = false
 	var i int = -2
-	for running == true {
+	for running {
 		cls()
 		fmt.Println("Hello, and welcome to Qube!")
 		fmt.Println("Want to take a ride? y/n + Enter")
@@ -31,6 +31,7 @@ func Login(running bool) bool {
 			i = -2
 		}
 		if i == -2 {
+			continue
 		}
 		for i > 0 {
 			fmt.Print("Please enter username: ")
@@ -75,8 +76,7 @@ func Login(running bool) bool {
 						var matchPassw string
 						fmt.Scanln(&matchPassw)
 						if inPassw == matchPassw {
-							var hashPassw []byte
-							hashPassw = hashInput(inPassw)
+							var hashPassw []byte = hashInput(inPassw)
 							DB.NewKeyValue(hashUsern, hashPassw)
 							checker = true
 							return checker
@@ -107,7 +107,7 @@ func Login(running bool) bool {
 			break
 		}
 	}
-	for running == false {
+	for !running {
 		checker = false
 		return checker
 	}
@@ -123,5 +123,5 @@ func hashInput(u string) []byte {
 }
 
 func cls() {
-	exec.Command("cls")
+	exec.Command("clear")
 }
