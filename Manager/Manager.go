@@ -45,7 +45,7 @@ func (m *ManagerList) ListPackages() {
 
 func (m *ManagerList) InstallPackage(pack string) {
 	for name, manager := range m.managers {
-		fmt.Printf("Installing %s", pack, "via manager %s\n", name)
+		fmt.Printf("Installing %s, via manager %s\n", pack, name)
 		output, err := manager.PkgInstall(pack)
 		if err != nil {
 			log.Fatal(err)

@@ -30,6 +30,8 @@ github.com/Carsen/PaxxNest/Manager v0.0.0-20240804211527-f79d0e639838 h1:krLNzIT
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240804211527-f79d0e639838/go.mod h1:0t+hKy+aUMtb5OV6Pe/ThGeu0ZdaIIsUPs8YqjUlFNk=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240804211939-630c55ec96ad h1:Qgn+yXh7Z44pxaZmJ7pbSL73y1IFUyZySiemjw93ejI=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240804211939-630c55ec96ad/go.mod h1:0t+hKy+aUMtb5OV6Pe/ThGeu0ZdaIIsUPs8YqjUlFNk=
+github.com/Carsen/PaxxNest/Manager v0.0.0-20240804212034-f87c40509a72 h1:p2XQQbuJoPt5+19qJnIqGiU5fYFtEH60Ig9MXv/AYnE=
+github.com/Carsen/PaxxNest/Manager v0.0.0-20240804212034-f87c40509a72/go.mod h1:0t+hKy+aUMtb5OV6Pe/ThGeu0ZdaIIsUPs8YqjUlFNk=
 github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 h1:uHogIJ9bXH75ZYrXnVShHIyywFiUZ7OOabwd9Sfd8rw=
 github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81/go.mod h1:6ZvnjTZX1LNo1oLpfaJK8h+MXqHxcBFBIwkgsv+xlv0=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
