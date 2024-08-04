@@ -10,7 +10,7 @@ require (
 
 require (
 	github.com/Carsen/PaxxNest/DB v0.0.0-20240804195341-72ebeca651e8 // indirect
-	github.com/Carsen/PaxxNest/Manager v0.0.0-20240804211145-e28d2077665c // indirect
+	github.com/Carsen/PaxxNest/Manager v0.0.0-20240804211245-003da90395f4 // indirect
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect

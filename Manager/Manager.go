@@ -9,7 +9,7 @@ import (
 // Interface to define common Package Manager Operations
 type PkgMgrOps interface {
 	PkgListInstalled() ([]string, error)
-	PkgInstall(name string) error
+	PkgInstall(name string) ([]string, error)
 }
 
 // Struct for different package managers
