@@ -55,7 +55,7 @@ func (m *ManagerList) InstallPackage(pack string) {
 			fmt.Printf("Package '%s' is already installed via manager '%s'.\n", pack, name)
 			return
 		}
-		
+
 		fmt.Printf("Installing '%s', via manager '%s'\n", pack, name)
 		output, err := manager.PkgInstall(pack)
 		if err != nil {
@@ -81,7 +81,7 @@ func (s BrewMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-func (s BrewMan) PkgIsInstalled(pack string) (bool, error){
+func (s BrewMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("brew", "list", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
@@ -112,7 +112,7 @@ func (s SnapMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-func (s SnapMan) PkgIsInstalled(pack string) (bool, error){
+func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("snap", "list", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
@@ -131,6 +131,3 @@ func (s SnapMan) PkgInstall(pack string) ([]string, error) {
 	}
 	return []string{string(output)}, nil
 }
-
-
-func ()
