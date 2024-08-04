@@ -46,7 +46,7 @@ func (m *ManagerList) ListPackages() {
 
 func (m *ManagerList) InstallPackage(pack string) {
 	for name, manager := range m.managers {
-		installed, err := manager.IsInstalled(pack)
+		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
 			log.Fatalf("Error checking if package '%s' is installed: %v", pack, err)
 		}
