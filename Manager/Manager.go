@@ -1,29 +1,34 @@
 package Manager
-//
+
+import (
+	"fmt"
+	"log"
+	"os/exec"
+)
+
 // Interface to define common Package Manager Operations
 type PkgMgrOps interface {
 	ListInstalledPackages() ([]string, error)
 	InstallPackage(name string) error
 }
-//
+
 // Struct for different package managers
 type ManagerList struct {
 	managers map[string]PkgMgrOps
 }
-//
+
 // Create new instance of ManagerList struct
 func NewManager() *ManagerList {
 	return &ManagerList{
-		managers: make(map[string]PkgMgrOps)
+		managers: make(map[string]PkgMgrOps),
 	}
 }
-//
+
 // Add a manager to ManagerList
 func (m *ManagerList) AddManager(name string, manager PkgMgrOps) {
 	m.managers[name] = manager
 }
-//
-//
+
 func (m *ManagerList) ListPackages() {
 	for name, manager := range m.managers {
 		fmt.Printf("Packages from %s:\n", name)
