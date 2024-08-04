@@ -20,12 +20,12 @@ func main() {
 		fmt.Scanln(&choice)
 
 		if choice == "L" || choice == "l" {
-			Manager.ListInstalledPackages()
+			mgr.ListPackages()
 		}
 		if choice == "i" || choice == "I" {
 			var whichpkg string
 			fmt.Scanln(&whichpkg)
-			Manager.InstallPackage(whichpkg)
+			mgr.InstallPackage(whichpkg)
 		}
 	}
 	for !Login.Login(true) {
