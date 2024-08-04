@@ -43,9 +43,9 @@ func (m *ManagerList) ListPackages() {
 	}
 }
 
-func (m *ManagerList) InstallPackage(pkg string) ([]string, error){
+func (m *ManagerList) InstallPackage(pkg string) ([]string, error) {
 	for name, manager := range m.managers {
-		fmt.Printf("Installing %s", pkg, "via manager %s\n" name)
+		fmt.Printf("Installing %s", pkg, "via manager %s\n", name)
 		output, err := manager.PkgInstall(pkg)
 		if err != nil {
 			log.Fatal(err)
