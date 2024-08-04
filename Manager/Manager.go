@@ -51,8 +51,8 @@ func (m *ManagerList) InstallPackage(pkg string) ([]string, error) {
 			log.Fatal(err)
 			return nil, err
 		}
-		return output, nil
 	}
+	return output, nil
 }
 
 type BrewMan struct{}
