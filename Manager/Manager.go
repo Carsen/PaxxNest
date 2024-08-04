@@ -43,16 +43,18 @@ func (m *ManagerList) ListPackages() {
 	}
 }
 
-func (m *ManagerList) InstallPackage(pkg string) ([]string, error) {
+func (m *ManagerList) InstallPackage(pack string) {
 	for name, manager := range m.managers {
-		fmt.Printf("Installing %s", pkg, "via manager %s\n", name)
-		output, err := manager.PkgInstall(pkg)
+		fmt.Printf("Installing %s", pack, "via manager %s\n", name)
+		output, err := manager.PkgInstall(pack)
 		if err != nil {
 			log.Fatal(err)
-			return nil, err
+			continue
+		}
+		for _, pkg := range packages {
+			fmt.Println(pkg)
 		}
 	}
-	return output, nil
 }
 
 type BrewMan struct{}
