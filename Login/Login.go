@@ -26,8 +26,8 @@ func Login(running bool) bool {
 			fmt.Println("I'm sorry to see you go so soon. We hope to see you back!")
 			i = -1
 			checker = false
-			running == false
-			break
+			running = false
+			return checker
 		} else {
 			i = -2
 		}

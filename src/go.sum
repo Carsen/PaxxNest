@@ -12,6 +12,8 @@ github.com/Carsen/PaxxNest/Login v0.0.0-20240804215908-56677da0b906 h1:dasUfR5It
 github.com/Carsen/PaxxNest/Login v0.0.0-20240804215908-56677da0b906/go.mod h1:/+p4a1h4jxOKNHBsk8uYCN4QbJwxnEwoCE4sMQqG80g=
 github.com/Carsen/PaxxNest/Login v0.0.0-20240804220121-427989aab5fd h1:voGeKhrAcftgf+5WG99F3NFbszvrBzyFRq7Axn5prjY=
 github.com/Carsen/PaxxNest/Login v0.0.0-20240804220121-427989aab5fd/go.mod h1:/+p4a1h4jxOKNHBsk8uYCN4QbJwxnEwoCE4sMQqG80g=
+github.com/Carsen/PaxxNest/Login v0.0.0-20240804220223-1ca9d8c1c5f4 h1:tu5THg3klOjgvFMXJi6i3AGVcXCG5uC4vZW1JYoIbGM=
+github.com/Carsen/PaxxNest/Login v0.0.0-20240804220223-1ca9d8c1c5f4/go.mod h1:/+p4a1h4jxOKNHBsk8uYCN4QbJwxnEwoCE4sMQqG80g=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240804200918-b0cbfb09a167 h1:JRltPvNoZgDkW5xmfCuk1fy7c4yObIA2nqTDQwE92M4=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240804200918-b0cbfb09a167/go.mod h1:0t+hKy+aUMtb5OV6Pe/ThGeu0ZdaIIsUPs8YqjUlFNk=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240804202601-470f4ad6e1ff h1:giCiox1AF27CKbQoIrFiU8ekW8hE2v2qXoyJwfu+0qM=
