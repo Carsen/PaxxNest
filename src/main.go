@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	for Login.Login() {
+	for Login.Login(true) {
 		fmt.Println("Hello!\n")
 		mgr := Manager.NewManager()
 		mgr.AddManager("brew", Manager.BrewMan{})
@@ -19,15 +19,16 @@ func main() {
 		var choice string
 		fmt.Scanln(&choice)
 
-		if choice == "L" || choice == "l"{
+		if choice == "L" || choice == "l" {
 			Manager.ListInstalledPackages()
 		}
-		if choice == "i" || choice == "I"{
+		if choice == "i" || choice == "I" {
 			var whichpkg string
 			fmt.Scanln(&whichpkg)
 			Manager.InstallPackage(whichpkg)
 		}
-	case false:
+	}
+	for !Login.Login(true) {
 		fmt.Println("Goodbye!")
 		os.Exit(1)
 	}
