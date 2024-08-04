@@ -51,7 +51,7 @@ func (m *ManagerList) InstallPackage(pack string) {
 			log.Fatal(err)
 			continue
 		}
-		for _, pkg := range packages {
+		for _, pkg := range output {
 			fmt.Println(pkg)
 		}
 	}
