@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	for Login.Login(true) {
+	switch Login.Login(true) {
+	case true:
 		fmt.Println("Hello!\n")
 		mgr := Manager.NewManager()
 		mgr.AddManager("brew", Manager.BrewMan{})
@@ -25,6 +26,11 @@ func main() {
 			var whichpkg string
 			fmt.Scanln(&whichpkg)
 			mgr.InstallPackage(whichpkg)
+		}
+		if choice == "r" || choice == "R" {
+			var whichpkg string
+			fmt.Scanln(&whichpkg)
+			mgr.RemovePackage(whichpkg)
 		}
 	}
 }

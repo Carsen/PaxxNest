@@ -27,7 +27,7 @@ func Login(running bool) bool {
 			i = -1
 			checker = false
 			running = false
-			return checker
+			break
 		} else {
 			i = -2
 		}

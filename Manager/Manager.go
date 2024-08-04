@@ -11,6 +11,7 @@ type PkgMgrOps interface {
 	PkgListInstalled() ([]string, error)
 	PkgIsInstalled(pack string) (bool, error)
 	PkgInstall(name string) ([]string, error)
+	PkgRemove(name string) ([string], error)
 }
 
 // Struct for different package managers
@@ -70,6 +71,29 @@ func (m *ManagerList) InstallPackage(pack string) {
 	fmt.Printf("Failed to install '%s' using all available packages managers.\n", pack)
 }
 
+func (m *ManagerList) RemovePackage(pack string) {
+	for name, manager:= range m.managers {
+		installed, err := manager.PkgIsInstalled(pack)
+		if err != nil {
+			log.Fatalf("Error checking if package '%s' is installed: %v", pack, err)
+		}
+
+		if !installed {
+			fmt.Printf("Package %s is not currently installed.", pack)
+			return
+		}
+
+		fmt.Printf("Removing '%', via manager '%s'.\n", pack, name)
+		output, err := manager.PkgInstall(pack)
+	}
+}
+
+//
+//
+//
+//
+//
+// Integration with HomeBrew Package Manager
 type BrewMan struct{}
 
 func (s BrewMan) PkgListInstalled() ([]string, error) {
@@ -101,6 +125,21 @@ func (s BrewMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
+func (s BrewMan) PkgRemove(pack string) ([]string, error) {
+	cmd := exec.Command("brew", "remove", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+//
+//
+//
+//
+//
+// Integration with Snap Package Manager
 type SnapMan struct{}
 
 func (s SnapMan) PkgListInstalled() ([]string, error) {
@@ -125,6 +164,15 @@ func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 
 func (s SnapMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("snap", "install", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+func (s SnapMan) PkgRemove(pack string) ([]string, error) {
+	cmd := exec.Command("snap", "remove", pack)
 	output, err := cmd.Output()
 	if err != nil {
 		return nil, err
