@@ -123,5 +123,5 @@ func hashInput(u string) []byte {
 }
 
 func cls() {
-	exec.Command("clear")
+	exec.Command("cls")
 }

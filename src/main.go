@@ -9,7 +9,7 @@ import (
 func main() {
 	switch Login.Login(true) {
 	case true:
-		fmt.Println("Hello!")
+		fmt.Printf("Hello!")
 	case false:
 		fmt.Println("Goodbye!")
 	}
