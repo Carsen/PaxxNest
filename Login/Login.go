@@ -41,7 +41,7 @@ func Login(running bool) bool {
 			fmt.Scanln(&inUsern)
 			hashUsern = hashInput(inUsern)
 			
-			keycheck := DB.CheckForKey(hashUsern)
+			keycheck, _ := DB.CheckForKey(hashUsern)
 			switch keycheck {
 			case true:
 				fmt.Print("Please enter password: ")
@@ -49,7 +49,7 @@ func Login(running bool) bool {
 				var hashPassw []byte
 				fmt.Scanln(&inPassw)
 				hashPassw = hashInput(inPassw)
-				keymatch := DB.ValueMatchesKey(hashUsern, hashPassw)
+				keymatch, _ := DB.ValueMatchesKey(hashUsern, hashPassw)
 				switch keymatch {
 				case true:
 					cls()
@@ -125,5 +125,5 @@ func hashInput(u string) []byte {
 }
 
 func cls() {
-	exec.Command("clear")
+	exec.Command("clear\n")
 }
