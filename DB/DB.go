@@ -10,42 +10,43 @@ import (
 func CheckForKey(usrk []byte) bool {
 	db, err := bitcask.Open("~/PaxxNestDB")
 	defer db.Close()
-	if err == nil {
-		t := db.Has(usrk)
-		return t
-	} else {
+	if err != nil {
 		log.Fatal(err)
-		return false
 	}
+	t := db.Has(userk)
+	db.Close()
+	return t
 }
 
 func ValueMatchesKey(userk []byte, userp []byte) bool {
 	var checker bool = false
-	db, err1 := bitcask.Open("~/PaxxNestDB")
-	defer db.Close()
-	if err1 == nil {
-		get, err2 := db.Get(userk)
-		if err2 == nil {
-			checker = bytes.Equal(userp, get)
-			return checker
-		} else {
-			log.Fatal(err2)
-			checker = false
-			return checker
-		}
-	} else {
+	
+	db, err1 := bitcask.Open("DB")
+	if err1 != nil {
 		log.Fatal(err1)
 		checker = false
 		return checker
 	}
+	
+	get, err2 := db.Get(userk)
+	if err2 != nil {
+		log.Fatal(err2)
+		checker = false
+		return checker
+	}
+	
+	checker = bytes.Equal(userp, get)
+	db.Close()
+	return checker
 }
 
 func NewKeyValue(userk []byte, userp []byte) {
-	db, err := bitcask.Open("~/PaxxNestDB")
-	defer db.Close()
-	if err == nil {
-		db.Put(userk, userp)
-	} else {
+	db, err := bitcask.Open("DB")
+
+	if err != nil {
 		log.Fatal(err)
 	}
+	
+	db.Put(userk, userp)
+	db.Close()
 }
