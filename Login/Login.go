@@ -13,7 +13,7 @@ func Login(running bool) bool {
 	var i int = -2
 	for running {
 		cls()
-		fmt.Println("Hello, and welcome to Qube!")
+		fmt.Println("Hello, and welcome to PaxxNest!")
 		fmt.Println("Want to take a ride? y/n + Enter")
 		var answer string
 		fmt.Scanln(&answer)

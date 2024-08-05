@@ -8,7 +8,7 @@ require (
 )
 
 require (
-	github.com/Carsen/PaxxNest/DB v0.0.0-20240805152556-5eb9bdd92062 // indirect
+	github.com/Carsen/PaxxNest/DB v0.0.0-20240805181606-ccda037e86a4 // indirect
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/hashicorp/go-immutable-radix/v2 v2.0.0 // indirect
