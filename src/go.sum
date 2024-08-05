@@ -8,6 +8,8 @@ github.com/Carsen/PaxxNest/DB v0.0.0-20240805181830-35aa3d721c75 h1:+cW62S7hU4lR
 github.com/Carsen/PaxxNest/DB v0.0.0-20240805181830-35aa3d721c75/go.mod h1:LkutnTluIIbQjCM4CZz1yejfjDHQEoYAccWi+Atw8Tk=
 github.com/Carsen/PaxxNest/DB v0.0.0-20240805181949-730d76d659dc h1:J1/dpG516qadSrIUeMHVZ8gWroDrym9SXGc4EsfR7BE=
 github.com/Carsen/PaxxNest/DB v0.0.0-20240805181949-730d76d659dc/go.mod h1:LkutnTluIIbQjCM4CZz1yejfjDHQEoYAccWi+Atw8Tk=
+github.com/Carsen/PaxxNest/DB v0.0.0-20240805182506-6104edf8e40b h1:ci9SWXcZr38AJ+TeW+RXKSt4DWBNok1Fo9oXq8+HsM8=
+github.com/Carsen/PaxxNest/DB v0.0.0-20240805182506-6104edf8e40b/go.mod h1:LkutnTluIIbQjCM4CZz1yejfjDHQEoYAccWi+Atw8Tk=
 github.com/Carsen/PaxxNest/Login v0.0.0-20240804220323-a42f213ec390 h1:zl/HT/cG3mo5eDWRmbniiJItoQGKzFkbIF5tvE/uwwI=
 github.com/Carsen/PaxxNest/Login v0.0.0-20240804220323-a42f213ec390/go.mod h1:/+p4a1h4jxOKNHBsk8uYCN4QbJwxnEwoCE4sMQqG80g=
 github.com/Carsen/PaxxNest/Login v0.0.0-20240805002514-58740670e6b9 h1:ek9VurNWDI+hn9nHEsRD6mFgI+DrRPkCOAhjId/+Wgo=
