@@ -8,50 +8,50 @@ import (
 )
 
 func CheckForKey(userk []byte) bool {
-	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+	dbCheck, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
 	if err != nil {
 		log.Fatal(err)
-		db.Close()
+		dbCheck.Close()
 	}
-	db.Close()
-	t := db.Has(userk)
-	db.Close()
+	dbCheck.Close()
+	t := dbCheck.Has(userk)
+	dbCheck.Close()
 	return t
 }
 
 func ValueMatchesKey(userk []byte, userp []byte) bool {
 	var checker bool = false
 
-	db, err1 := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+	dbMatch, err1 := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
 
 	if err1 != nil {
 		log.Fatal(err1)
 		checker = false
-		db.Close()
+		dbMatch.Close()
 		return checker
 	}
-	db.Close()
+	dbMatch.Close()
 	get, err2 := db.Get(userk)
 	if err2 != nil {
 		log.Fatal(err2)
 		checker = false
-		db.Close()
+		dbMatch.Close()
 		return checker
 	}
-	db.Close()
+	dbMatch.Close()
 	checker = bytes.Equal(userp, get)
-	db.Close()
+	dbMatch.Close()
 	return checker
 }
 
 func NewKeyValue(userk []byte, userp []byte) {
-	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(false))
+	dbNew, err := bitcask.Open("DB", bitcask.WithOpenReadonly(false))
 
 	if err != nil {
 		log.Fatal(err)
-		db.Close()
+		dbNew.Close()
 	}
-	db.Close()
-	db.Put(userk, userp)
-	db.Close()
+	dbNew.Close()
+	dbNew.Put(userk, userp)
+	dbNew.Close()
 }
