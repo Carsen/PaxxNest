@@ -12,6 +12,7 @@ func CheckForKey(usrk []byte) bool {
 	defer db.Close()
 	if err != nil {
 		log.Fatal(err)
+		db.Close()
 	}
 	t := db.Has(userk)
 	db.Close()
@@ -25,6 +26,7 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 	if err1 != nil {
 		log.Fatal(err1)
 		checker = false
+		db.Close()
 		return checker
 	}
 	
@@ -32,6 +34,7 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 	if err2 != nil {
 		log.Fatal(err2)
 		checker = false
+		db.Close()
 		return checker
 	}
 	
@@ -45,6 +48,7 @@ func NewKeyValue(userk []byte, userp []byte) {
 
 	if err != nil {
 		log.Fatal(err)
+		db.Close()
 	}
 	
 	db.Put(userk, userp)
