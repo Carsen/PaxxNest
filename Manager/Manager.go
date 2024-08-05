@@ -100,6 +100,9 @@ func (m *ManagerList) RemovePackage(pack string) {
 	fmt.Printf("Failed to remove '%s' using all available package managers. \n", pack)
 }
 
+//
+//
+//
 // Integration with HomeBrew Package Manager
 type BrewMan struct{}
 
@@ -145,6 +148,9 @@ func (s BrewMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
+//
+//
+//
 // Integration with Snap Package Manager
 type SnapMan struct{}
 
@@ -190,6 +196,9 @@ func (s SnapMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
+//
+//
+//
 // Integration with PacMan Package Manager
 type PacMan struct{}
 
@@ -263,7 +272,7 @@ func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 	return len(output) > 0, nil
 }
 
-// Pacman Install 'Package'
+// Winget Install 'Package'
 func (s WingetMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("winget", "install", pack)
 	output, err := cmd.Output()
@@ -276,6 +285,152 @@ func (s WingetMan) PkgInstall(pack string) ([]string, error) {
 // Winget Remove 'Package'
 func (s WingetMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("winget", "remove", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+//
+//
+//
+// Integration with Scoop Manager
+type ScoopMan struct{}
+
+// Scoop List
+func (s ScoopMan) PkgListInstalled() ([]string, error) {
+	cmd := exec.Command("scoop", "list")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Check is 'Package' is installed using Scoop List
+func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
+	cmd := exec.Command("scoop", "list", pack)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
+			return false, nil
+		}
+	}
+	return len(output) > 0, nil
+}
+
+// Scoop Install 'Package'
+func (s ScoopMan) PkgInstall(pack string) ([]string, error) {
+	cmd := exec.Command("scoop", "install", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Scoop Remove 'Package'
+func (s ScoopMan) PkgRemove(pack string) ([]string, error) {
+	cmd := exec.Command("scoop", "uninstall", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+//
+//
+//
+// Integration with Chocolatey manager
+type ChocoMan struct{}
+
+// Choco List
+func (s ChocoMan) PkgListInstalled() ([]string, error) {
+	cmd := exec.Command("choco", "list", "--local-only")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+
+// Check if 'Package' is installed using Choco List
+func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
+	cmd := exec.Command("choco", "list", pack, "--local-only")
+	output, err := cmd.Output()
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
+			return false, nil
+		}
+	}
+	return len(output) > 0, nil
+}
+
+// Choco install 'Package'
+func (s ChocoMan) PkgInstall (pack string) ([]string, error) {
+	cmd := exec.Command("choco", "install", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Choco remove 'Package'
+func (s ChocoMan) PkgInstall (pack string) ([]string, error) {
+	cmd := exec.Command("choco", "uninstall", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+//
+//
+//
+// Integration with NPM manager
+type NpmMan struct{}
+
+// NPM List
+func (s NpmMan) PkgListInstalled() ([]string, error) {
+	cmd := exec.Command("npm", "list")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+
+// Check if 'Package' is installed using NPM List
+func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
+	cmd := exec.Command("npm", "list", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
+			return false, nil
+		}
+	}
+	return len(output) > 0, nil
+}
+
+// NPM install 'Package'
+func (s NpmMan) PkgInstall (pack string) ([]string, error) {
+	cmd := exec.Command("npm", "install", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// NPM remove 'Package'
+func (s NpmMan) PkgInstall (pack string) ([]string, error) {
+	cmd := exec.Command("npm", "uninstall", pack)
 	output, err := cmd.Output()
 	if err != nil {
 		return nil, err
