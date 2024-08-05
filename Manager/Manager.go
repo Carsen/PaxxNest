@@ -370,7 +370,7 @@ func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
 }
 
 // Choco install 'Package'
-func (s ChocoMan) PkgInstall (pack string) ([]string, error) {
+func (s ChocoMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("choco", "install", pack)
 	output, err := cmd.Output()
 	if err != nil {
@@ -380,7 +380,7 @@ func (s ChocoMan) PkgInstall (pack string) ([]string, error) {
 }
 
 // Choco remove 'Package'
-func (s ChocoMan) PkgInstall (pack string) ([]string, error) {
+func (s ChocoMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("choco", "uninstall", pack)
 	output, err := cmd.Output()
 	if err != nil {
@@ -419,7 +419,7 @@ func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
 }
 
 // NPM install 'Package'
-func (s NpmMan) PkgInstall (pack string) ([]string, error) {
+func (s NpmMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("npm", "install", pack)
 	output, err := cmd.Output()
 	if err != nil {
@@ -429,7 +429,7 @@ func (s NpmMan) PkgInstall (pack string) ([]string, error) {
 }
 
 // NPM remove 'Package'
-func (s NpmMan) PkgInstall (pack string) ([]string, error) {
+func (s NpmMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("npm", "uninstall", pack)
 	output, err := cmd.Output()
 	if err != nil {

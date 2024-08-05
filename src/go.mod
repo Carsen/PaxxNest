@@ -4,7 +4,7 @@ go 1.22.5
 
 require (
 	github.com/Carsen/PaxxNest/Login v0.0.0-20240805002514-58740670e6b9
-	github.com/Carsen/PaxxNest/Manager v0.0.0-20240805002514-58740670e6b9
+	github.com/Carsen/PaxxNest/Manager v0.0.0-20240805173339-095219941e03
 )
 
 require (
