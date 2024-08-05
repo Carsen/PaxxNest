@@ -7,51 +7,45 @@ import (
 	"go.mills.io/bitcask/v2"
 )
 
-func CheckForKey(userk []byte) bool {
-	dbCheck, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+func CheckForKey(userk []byte) (bool, error) {
+	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+	defer db.Close()
 	if err != nil {
 		log.Fatal(err)
-		dbCheck.Close()
+		return nil, err
 	}
-	dbCheck.Close()
 	t := dbCheck.Has(userk)
-	dbCheck.Close()
-	return t
+	return t, nil
 }
 
-func ValueMatchesKey(userk []byte, userp []byte) bool {
+func ValueMatchesKey(userk []byte, userp []byte) (bool, error) {
 	var checker bool = false
 
-	dbMatch, err1 := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
-
-	if err1 != nil {
-		log.Fatal(err1)
-		checker = false
-		dbMatch.Close()
-		return checker
-	}
-	dbMatch.Close()
-	get, err2 := dbMatch.Get(userk)
-	if err2 != nil {
-		log.Fatal(err2)
-		checker = false
-		dbMatch.Close()
-		return checker
-	}
-	dbMatch.Close()
-	checker = bytes.Equal(userp, get)
-	dbMatch.Close()
-	return checker
-}
-
-func NewKeyValue(userk []byte, userp []byte) {
-	dbNew, err := bitcask.Open("DB", bitcask.WithOpenReadonly(false))
-
+	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+	defer db.Close()
 	if err != nil {
 		log.Fatal(err)
-		dbNew.Close()
+		checker = false
+		return checker, err
 	}
-	dbNew.Close()
+	
+	get, err := db.Get(userk)
+	if err != nil {
+		log.Fatal(err)
+		checker = false
+		return checker, err
+	}
+	checker = bytes.Equal(userp, get)
+	return checker, nil
+}
+
+func NewKeyValue(userk []byte, userp []byte) error {
+	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(false))
+	defer db.Close()
+	if err != nil {
+		log.Fatal(err)
+		return err
+	}
 	dbNew.Put(userk, userp)
-	dbNew.Close()
+	return nil
 }
