@@ -31,7 +31,7 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 		return checker
 	}
 	dbMatch.Close()
-	get, err2 := db.Get(userk)
+	get, err2 := dbMatch.Get(userk)
 	if err2 != nil {
 		log.Fatal(err2)
 		checker = false
