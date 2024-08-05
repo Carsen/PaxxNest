@@ -189,3 +189,48 @@ func (s SnapMan) PkgRemove(pack string) ([]string, error) {
 	}
 	return []string{string(output)}, nil
 }
+
+// Integration with PacMan Package Manager
+type PacMan struct{}
+
+// PacMan List
+func (s PacMan) PkgListInstalled() ([]string, error) {
+	cmd := exec.Command("pacman", "-Q")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Check is 'Package' is installed using Snap List
+func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
+	cmd := exec.Command("pacman", "-Q", pack)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
+			return false, nil
+		}
+	}
+	return len(output) > 0, nil
+}
+
+// Snap Install 'Package'
+func (s SnapMan) PkgInstall(pack string) ([]string, error) {
+	cmd := exec.Command("pacman", "-S", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Snap Remove 'Package'
+func (s SnapMan) PkgRemove(pack string) ([]string, error) {
+	cmd := exec.Command("pacman", "-R", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
