@@ -3,7 +3,7 @@ module github.com/Carsen/PaxxNest
 go 1.22.5
 
 require (
-	github.com/Carsen/PaxxNest/Login v0.0.0-20240805195343-22f8a2c6545d
+	github.com/Carsen/PaxxNest/Login v0.0.0-20240805204315-c6ef517ec271
 	github.com/Carsen/PaxxNest/Manager v0.0.0-20240805195343-22f8a2c6545d
 )
 

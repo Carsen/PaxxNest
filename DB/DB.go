@@ -10,7 +10,7 @@ import (
 func CheckForKey(userk []byte) (bool, error) {
 	var checker bool
 	
-	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+	db, err := bitcask.Open("./DB", bitcask.WithOpenReadonly(true))
 	defer db.Close()
 	if err != nil {
 		log.Fatal(err)
@@ -24,7 +24,7 @@ func CheckForKey(userk []byte) (bool, error) {
 func ValueMatchesKey(userk []byte, userp []byte) (bool, error) {
 	var checker bool = false
 
-	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(true))
+	db, err := bitcask.Open("./DB", bitcask.WithOpenReadonly(true))
 	defer db.Close()
 	if err != nil {
 		log.Fatal(err)
@@ -43,7 +43,7 @@ func ValueMatchesKey(userk []byte, userp []byte) (bool, error) {
 }
 
 func NewKeyValue(userk []byte, userp []byte) error {
-	db, err := bitcask.Open("DB", bitcask.WithOpenReadonly(false))
+	db, err := bitcask.Open("./DB", bitcask.WithOpenReadonly(false))
 	defer db.Close()
 	if err != nil {
 		log.Fatal(err)
