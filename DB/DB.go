@@ -13,6 +13,7 @@ func CheckForKey(userk []byte) bool {
 		log.Fatal(err)
 		db.Close()
 	}
+	db.Close()
 	t := db.Has(userk)
 	db.Close()
 	return t
@@ -22,13 +23,14 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 	var checker bool = false
 	
 	db, err1 := bitcask.Open("DB")
+	
 	if err1 != nil {
 		log.Fatal(err1)
 		checker = false
 		db.Close()
 		return checker
 	}
-	
+	db.Close()
 	get, err2 := db.Get(userk)
 	if err2 != nil {
 		log.Fatal(err2)
@@ -36,7 +38,7 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 		db.Close()
 		return checker
 	}
-	
+	db.Close()
 	checker = bytes.Equal(userp, get)
 	db.Close()
 	return checker
@@ -49,7 +51,7 @@ func NewKeyValue(userk []byte, userp []byte) {
 		log.Fatal(err)
 		db.Close()
 	}
-	
+	db.Close()
 	db.Put(userk, userp)
 	db.Close()
 }
