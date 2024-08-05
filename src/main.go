@@ -12,9 +12,10 @@ func main() {
 	case true:
 		fmt.Println("Hello!\n")
 		mgr := Manager.NewManager()
-		mgr.AddManager("brew", Manager.BrewMan{})
-		mgr.AddManager("snap", Manager.SnapMan{})
-		mgr.AddManager("pacman", Manager.PacMan{})
+		//	mgr.AddManager("brew", Manager.BrewMan{}) // Uncomment this line for Homebrew integration
+		//	mgr.AddManager("snap", Manager.SnapMan{}) // Uncomment this line for Snap integration
+		//	mgr.AddManager("pacman", Manager.PacMan{}) // Uncomment this line for Pacman integration
+		//	mgr.AddManager("winget", Manager.WingetMan{}) // Uncomment this line for Winget integration
 
 		fmt.Print("Press 'L' for list, 'I' for install, and 'R' for remove")
 		var choice string
