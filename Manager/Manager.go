@@ -203,8 +203,8 @@ func (s PacMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check is 'Package' is installed using Snap List
-func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
+// Check is 'Package' is installed using Pacman List
+func (s PacMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("pacman", "-Q", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
@@ -215,8 +215,8 @@ func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 	return len(output) > 0, nil
 }
 
-// Snap Install 'Package'
-func (s SnapMan) PkgInstall(pack string) ([]string, error) {
+// Pacman Install 'Package'
+func (s PacMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("pacman", "-S", pack)
 	output, err := cmd.Output()
 	if err != nil {
@@ -225,8 +225,8 @@ func (s SnapMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Snap Remove 'Package'
-func (s SnapMan) PkgRemove(pack string) ([]string, error) {
+// Pacman Remove 'Package'
+func (s PacMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("pacman", "-R", pack)
 	output, err := cmd.Output()
 	if err != nil {

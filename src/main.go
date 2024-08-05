@@ -14,6 +14,7 @@ func main() {
 		mgr := Manager.NewManager()
 		mgr.AddManager("brew", Manager.BrewMan{})
 		mgr.AddManager("snap", Manager.SnapMan{})
+		mgr.AddManager("pacman", Manager.PacMan{})
 
 		fmt.Print("Press 'L' for list, 'I' for install, and 'R' for remove")
 		var choice string
