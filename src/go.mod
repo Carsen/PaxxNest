@@ -3,12 +3,12 @@ module github.com/Carsen/PaxxNest
 go 1.22.5
 
 require (
-	github.com/Carsen/PaxxNest/Login v0.0.0-20240805002514-58740670e6b9
-	github.com/Carsen/PaxxNest/Manager v0.0.0-20240805173730-8dabcfc5843d
+	github.com/Carsen/PaxxNest/Login v0.0.0-20240805181830-35aa3d721c75
+	github.com/Carsen/PaxxNest/Manager v0.0.0-20240805181830-35aa3d721c75
 )
 
 require (
-	github.com/Carsen/PaxxNest/DB v0.0.0-20240805181606-ccda037e86a4 // indirect
+	github.com/Carsen/PaxxNest/DB v0.0.0-20240805181830-35aa3d721c75 // indirect
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/hashicorp/go-immutable-radix/v2 v2.0.0 // indirect

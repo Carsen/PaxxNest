@@ -7,7 +7,7 @@ import (
 	"go.mills.io/bitcask/v2"
 )
 
-func CheckForKey(usrk []byte) bool {
+func CheckForKey(userk []byte) bool {
 	db, err := bitcask.Open("~/PaxxNestDB")
 	defer db.Close()
 	if err != nil {
