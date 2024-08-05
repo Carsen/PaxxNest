@@ -40,16 +40,17 @@ func Login(running bool) bool {
 			var hashUsern []byte
 			fmt.Scanln(&inUsern)
 			hashUsern = hashInput(inUsern)
-
-			switch DB.CheckForKey(hashUsern) {
+			
+			keycheck := DB.CheckForKey(hashUsern)
+			switch keycheck {
 			case true:
 				fmt.Print("Please enter password: ")
 				var inPassw string
 				var hashPassw []byte
 				fmt.Scanln(&inPassw)
 				hashPassw = hashInput(inPassw)
-
-				switch DB.ValueMatchesKey(hashUsern, hashPassw) {
+				keymatch := DB.ValueMatchesKey(hashUsern, hashPassw)
+				switch keymatch {
 				case true:
 					cls()
 					checker = true
