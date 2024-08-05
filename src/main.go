@@ -17,9 +17,9 @@ func main() {
 		//	mgr.AddManager("pacman", Manager.PacMan{}) // Uncomment this line for Pacman integration
 		//	mgr.AddManager("winget", Manager.WingetMan{}) // Uncomment this line for Winget integration
 
-		fmt.Print("Press 'L' for list, 'I' for install, and 'R' for remove")
+		fmt.Println("Press 'L' for list, 'I' for install, and 'R' for remove")
 		var choice string
-		fmt.Scanln(&choice)
+		fmt.Scanln(">", &choice)
 
 		if choice == "L" || choice == "l" {
 			mgr.ListPackages()

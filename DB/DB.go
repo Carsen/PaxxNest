@@ -8,7 +8,7 @@ import (
 )
 
 func CheckForKey(usrk []byte) bool {
-	db, err := bitcask.Open("./db")
+	db, err := bitcask.Open("~/PaxxNestDB")
 	defer db.Close()
 	if err == nil {
 		t := db.Has(usrk)
@@ -21,7 +21,7 @@ func CheckForKey(usrk []byte) bool {
 
 func ValueMatchesKey(userk []byte, userp []byte) bool {
 	var checker bool = false
-	db, err1 := bitcask.Open("./db")
+	db, err1 := bitcask.Open("~/PaxxNestDB")
 	defer db.Close()
 	if err1 == nil {
 		get, err2 := db.Get(userk)
@@ -41,7 +41,7 @@ func ValueMatchesKey(userk []byte, userp []byte) bool {
 }
 
 func NewKeyValue(userk []byte, userp []byte) {
-	db, err := bitcask.Open("./db")
+	db, err := bitcask.Open("~/PaxxNestDB")
 	defer db.Close()
 	if err == nil {
 		db.Put(userk, userp)

@@ -234,3 +234,51 @@ func (s PacMan) PkgRemove(pack string) ([]string, error) {
 	}
 	return []string{string(output)}, nil
 }
+
+//
+//
+//
+// Integration with Winget Manager
+type WingetMan struct{}
+
+// Winget List
+func (s WingetMan) PkgListInstalled() ([]string, error) {
+	cmd := exec.Command("winget", "list")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Check is 'Package' is installed using Winget List
+func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
+	cmd := exec.Command("winget", "list", pack)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
+			return false, nil
+		}
+	}
+	return len(output) > 0, nil
+}
+
+// Pacman Install 'Package'
+func (s WingetMan) PkgInstall(pack string) ([]string, error) {
+	cmd := exec.Command("winget", "install", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Winget Remove 'Package'
+func (s WingetMan) PkgRemove(pack string) ([]string, error) {
+	cmd := exec.Command("winget", "remove", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
