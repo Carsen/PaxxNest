@@ -8,7 +8,7 @@ import (
 )
 
 func CheckForKey(userk []byte) bool {
-	db, err := bitcask.Open("~/PaxxNestDB")
+	db, err := bitcask.Open("DB")
 	defer db.Close()
 	if err != nil {
 		log.Fatal(err)

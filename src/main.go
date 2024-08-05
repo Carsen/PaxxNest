@@ -22,7 +22,8 @@ func main() {
 
 		fmt.Println("Press 'L' for list, 'I' for install, and 'R' for remove")
 		var choice string
-		fmt.Scanln(">", &choice)
+		fmt.Println("> ")
+		fmt.Scanln(&choice)
 
 		if choice == "L" || choice == "l" {
 			mgr.ListPackages()
