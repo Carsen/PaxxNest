@@ -118,11 +118,9 @@ func (s BrewMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("brew", "list", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
-		}
+		return false, err
 	}
-	return len(output) > 0, nil
+	return true, nil
 }
 
 // Brew Install 'Package'
@@ -163,11 +161,9 @@ func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("snap", "list", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
-		}
+		return false, err
 	}
-	return len(output) > 0, nil
+	return true, err
 }
 
 // Snap Install 'Package'
@@ -208,11 +204,10 @@ func (s PacMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("pacman", "-Q", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
+		return false, err
 		}
 	}
-	return len(output) > 0, nil
+	return true, nil
 }
 
 // Pacman Install 'Package'
@@ -253,11 +248,10 @@ func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("winget", "list", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
+		return false, err
 		}
 	}
-	return len(output) > 0, nil
+	return true, nil
 }
 
 // Winget Install 'Package'
@@ -298,11 +292,10 @@ func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("scoop", "list", pack)
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
+		return false, err
 		}
 	}
-	return len(output) > 0, nil
+	return true, nil
 }
 
 // Scoop Install 'Package'
@@ -343,11 +336,9 @@ func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("choco", "list", pack, "--local-only")
 	output, err := cmd.Output()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
-		}
+		return false, err
 	}
-	return len(output) > 0, nil
+	return true, nil
 }
 
 // Choco install 'Package'
@@ -388,11 +379,10 @@ func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("npm", "list", pack)
 	output, err := cmd.Output()
 	if err != nil {
-		if exitError, ok := err.(*exec.ExitError); ok && exitError.ExitCode() == 1 {
-			return false, nil
+		return false, err
 		}
 	}
-	return len(output) > 0, nil
+	return true, nil
 }
 
 // NPM install 'Package'
