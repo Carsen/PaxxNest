@@ -79,6 +79,7 @@ func (m *ManagerList) RemovePackage(pack string) {
 		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
 			log.Printf("Error checking if package '%s' is installed: %v", pack, err)
+			continue
 		}
 
 		if !installed {
