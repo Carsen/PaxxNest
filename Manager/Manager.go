@@ -37,7 +37,7 @@ func (m *ManagerList) ListPackages() {
 		fmt.Printf("Packages from %s:\n", name)
 		packages, err := manager.PkgListInstalled()
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 			continue
 		}
 		for _, pkg := range packages {
@@ -51,7 +51,7 @@ func (m *ManagerList) InstallPackage(pack string) {
 	for name, manager := range m.managers {
 		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
-			log.Fatalf("Error checking if package '%s' is installed: %v", pack, err)
+			log.Printf("Error checking if package '%s' is installed: %v", pack, err)
 		}
 
 		if installed {
@@ -78,7 +78,7 @@ func (m *ManagerList) RemovePackage(pack string) {
 	for name, manager := range m.managers {
 		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
-			log.Fatalf("Error checking if package '%s' is installed: %v", pack, err)
+			log.Printf("Error checking if package '%s' is installed: %v", pack, err)
 		}
 
 		if !installed {
@@ -100,9 +100,6 @@ func (m *ManagerList) RemovePackage(pack string) {
 	fmt.Printf("Failed to remove '%s' using all available package managers. \n", pack)
 }
 
-//
-//
-//
 // Integration with HomeBrew Package Manager
 type BrewMan struct{}
 
@@ -148,9 +145,6 @@ func (s BrewMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-//
-//
-//
 // Integration with Snap Package Manager
 type SnapMan struct{}
 
@@ -196,9 +190,6 @@ func (s SnapMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-//
-//
-//
 // Integration with PacMan Package Manager
 type PacMan struct{}
 
@@ -244,9 +235,6 @@ func (s PacMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-//
-//
-//
 // Integration with Winget Manager
 type WingetMan struct{}
 
@@ -292,9 +280,6 @@ func (s WingetMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-//
-//
-//
 // Integration with Scoop Manager
 type ScoopMan struct{}
 
@@ -340,9 +325,6 @@ func (s ScoopMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-//
-//
-//
 // Integration with Chocolatey manager
 type ChocoMan struct{}
 
@@ -355,7 +337,6 @@ func (s ChocoMan) PkgListInstalled() ([]string, error) {
 	}
 	return []string{string(output)}, nil
 }
-
 
 // Check if 'Package' is installed using Choco List
 func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
@@ -389,9 +370,6 @@ func (s ChocoMan) PkgRemove(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-//
-//
-//
 // Integration with NPM manager
 type NpmMan struct{}
 
@@ -404,7 +382,6 @@ func (s NpmMan) PkgListInstalled() ([]string, error) {
 	}
 	return []string{string(output)}, nil
 }
-
 
 // Check if 'Package' is installed using NPM List
 func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
