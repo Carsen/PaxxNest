@@ -207,7 +207,7 @@ func (s PacMan) PkgIsInstalled(pack string) (bool, error) {
 		return false, err
 		}
 	}
-	return true, nil
+	return len(output) > 0, nil
 }
 
 // Pacman Install 'Package'
@@ -251,7 +251,7 @@ func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 		return false, err
 		}
 	}
-	return true, nil
+	return len(output) > 0, nil
 }
 
 // Winget Install 'Package'
@@ -295,7 +295,7 @@ func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
 		return false, err
 		}
 	}
-	return true, nil
+	return len(output) > 0, nil
 }
 
 // Scoop Install 'Package'
@@ -338,7 +338,7 @@ func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	return true, nil
+	return len(output) > 0, nil
 }
 
 // Choco install 'Package'
@@ -382,7 +382,7 @@ func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
 		return false, err
 		}
 	}
-	return true, nil
+	return len(output) > 0, nil
 }
 
 // NPM install 'Package'
