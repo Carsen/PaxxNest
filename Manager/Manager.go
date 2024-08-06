@@ -116,7 +116,7 @@ func (s BrewMan) PkgListInstalled() ([]string, error) {
 // Check if 'Package' was installed using Brew List
 func (s BrewMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("brew", "list", pack)
-	output, err := cmd.CombinedOutput()
+	_, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
 	}
