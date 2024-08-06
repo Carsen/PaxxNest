@@ -159,7 +159,7 @@ func (s SnapMan) PkgListInstalled() ([]string, error) {
 // Check is 'Package' is installed using Snap List
 func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("snap", "list", pack)
-	output, err := cmd.CombinedOutput()
+	_, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
 	}
@@ -202,7 +202,7 @@ func (s PacMan) PkgListInstalled() ([]string, error) {
 // Check is 'Package' is installed using Pacman List
 func (s PacMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("pacman", "-Q", pack)
-	output, err := cmd.CombinedOutput()
+	_, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
 	}
@@ -245,7 +245,7 @@ func (s WingetMan) PkgListInstalled() ([]string, error) {
 // Check is 'Package' is installed using Winget List
 func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("winget", "list", pack)
-	output, err := cmd.CombinedOutput()
+	_, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
 	}
@@ -288,7 +288,7 @@ func (s ScoopMan) PkgListInstalled() ([]string, error) {
 // Check is 'Package' is installed using Scoop List
 func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("scoop", "list", pack)
-	output, err := cmd.CombinedOutput()
+	_, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
 	}
@@ -331,7 +331,7 @@ func (s ChocoMan) PkgListInstalled() ([]string, error) {
 // Check if 'Package' is installed using Choco List
 func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("choco", "list", pack, "--local-only")
-	output, err := cmd.Output()
+	_, err := cmd.Output()
 	if err != nil {
 		return false, err
 	}
@@ -374,7 +374,7 @@ func (s NpmMan) PkgListInstalled() ([]string, error) {
 // Check if 'Package' is installed using NPM List
 func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("npm", "list", pack)
-	output, err := cmd.Output()
+	_, err := cmd.Output()
 	if err != nil {
 		return false, err
 	}
