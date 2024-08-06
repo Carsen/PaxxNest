@@ -2,8 +2,9 @@ package Manager
 
 import (
 	"fmt"
-	"log"
 	"os/exec"
+
+	"github.com/Carsen/PaxxNest/ErrLog"
 )
 
 // Interface to define common Package Manager Operations
@@ -37,7 +38,7 @@ func (m *ManagerList) ListPackages() {
 		fmt.Printf("Packages from %s:\n", name)
 		packages, err := manager.PkgListInstalled()
 		if err != nil {
-			log.Println(err)
+			ErrLog.LogErr(err)
 			continue
 		}
 		for _, pkg := range packages {
@@ -51,7 +52,7 @@ func (m *ManagerList) InstallPackage(pack string) {
 	for name, manager := range m.managers {
 		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
-			log.Printf("Error checking if package '%s' is installed: %v", pack, err)
+			ErrLog.LogErr(err)
 		}
 
 		if installed {
@@ -78,7 +79,7 @@ func (m *ManagerList) RemovePackage(pack string) {
 	for name, manager := range m.managers {
 		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
-			log.Printf("Error checking if package '%s' is installed: %v", pack, err)
+			ErrLog.LogErr("Error checking if package '%s' is installed: %v", pack, err)
 			continue
 		}
 
