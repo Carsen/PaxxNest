@@ -33,13 +33,13 @@ func (m *ManagerList) AddManager(name string, manager PkgMgrOps) {
 // List Packages
 func (m *ManagerList) ListPackages() {
 	for name, manager := range m.managers {
-		fmt.Printf("Packages from %s:\n", name)
 		packages, err := manager.PkgListInstalled()
 		if err != nil {
 			ErrLog.LogErr(err)
 			continue
 		}
 		for _, pkg := range packages {
+			fmt.Printf("Packages from %s:\n", name)
 			fmt.Println(pkg)
 		}
 	}
