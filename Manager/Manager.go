@@ -251,7 +251,7 @@ func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 
 // Winget Install 'Package'
 func (s WingetMan) PkgInstall(pack string) ([]string, error) {
-	cmd := exec.Command("winget", "install", pack)
+	cmd := exec.Command("winget", "install", pack, "--accept-package-agreements")
 	output, err := cmd.Output()
 	if err != nil {
 		return nil, err
