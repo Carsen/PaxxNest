@@ -4,6 +4,7 @@ import (
 	"fmt"
 	
 	"github.com/Carsen/PaxxNest/Manager"
+	tea "github.com/charmbracelet/bubbletea"
 )
 
 func main() {
