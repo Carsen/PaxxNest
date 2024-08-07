@@ -84,7 +84,7 @@ func (m *ManagerList) RemovePackage(pack string) {
 			fmt.Printf("Package '%s' is not currently installed.", pack)
 			return
 		}
-		output, err := manager.PkgInstall(pack)
+		output, err := manager.PkgRemove(pack)
 		if err != nil {
 			fmt.Printf("Failed to remove '%s' using manager '%s': %v.\n Trying next", pack, name, err)
 			continue
