@@ -32,7 +32,7 @@ PaxxNest is a universal package manager written in Golang. It iterates through a
 
 <h2>Usage:</h2>
 
-<h4>List/Install/Remove</h4>
+<h4>List/Install/Remove Packages</h4>
 
 Follow the in-app prompts to select your operation and package.
 
