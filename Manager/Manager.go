@@ -90,7 +90,7 @@ func (m *ManagerList) RemovePackage(pack string) {
 			continue
 		}
 
-		fmt.Printf("%s: \n%s\n", pack, output)
+		fmt.Printf("%s: \n%s\n", name, output)
 		fmt.Printf("Successfully removed '%s' using manager '%s'.\n", pack, name)
 		return
 	}
@@ -285,11 +285,11 @@ func (s ScoopMan) PkgListInstalled() ([]string, error) {
 // Check is 'Package' is installed using Scoop List
 func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("scoop", "list", pack)
-	_, err := cmd.CombinedOutput()
+	output, err := cmd.CombinedOutput()
 	if err != nil {
 		return false, err
 	}
-	return true, nil
+	return len(string(output)) > 50, nil
 }
 
 // Scoop Install 'Package'
@@ -299,7 +299,7 @@ func (s ScoopMan) PkgInstall(pack string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	return len(string(output)) < 50, nil
+	return []string{string(output)}, nil
 }
 
 // Scoop Remove 'Package'
