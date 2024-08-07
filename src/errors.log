@@ -13,3 +13,7 @@ Error: 2024/08/07 11:48:33 ErrLog.go:21: exit status 0x8a150014
 Error: 2024/08/07 11:50:31 ErrLog.go:21: exit status 0x8a150014
 Error: 2024/08/07 11:58:44 ErrLog.go:21: exit status 0x8a150014
 Error: 2024/08/07 12:05:30 ErrLog.go:21: exit status 0x8a150014
+Error: 2024/08/07 12:20:25 ErrLog.go:21: exec: "pacman": executable file not found in %PATH%
+Error: 2024/08/07 12:20:37 ErrLog.go:21: exec: "choco": executable file not found in %PATH%
+Error: 2024/08/07 12:22:31 ErrLog.go:21: exec: "pacman": executable file not found in %PATH%
+Error: 2024/08/07 12:22:42 ErrLog.go:21: exit status 0x8a150014

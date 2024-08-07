@@ -299,7 +299,7 @@ func (s ScoopMan) PkgInstall(pack string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	return []string{string(output)}, nil
+	return len(string(output)) < 50, nil
 }
 
 // Scoop Remove 'Package'

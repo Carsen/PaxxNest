@@ -2,3 +2,5 @@ github.com/Carsen/PaxxNest/ErrLog v0.0.0-20240806224824-bd4be98699a8 h1:gVcvHH3r
 github.com/Carsen/PaxxNest/ErrLog v0.0.0-20240806224824-bd4be98699a8/go.mod h1:+UUjh7xEQ0L76VUGBwmd+m+ORpLsDWDj+z1dAMp3Z8E=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240807170410-9db04ba901d0 h1:0Nfzd92yC2moqa8T+J2ldwQa7GhyEvj/lfeiFS+KjtM=
 github.com/Carsen/PaxxNest/Manager v0.0.0-20240807170410-9db04ba901d0/go.mod h1:fO1TKF9yp8LA+P0hKjN1AMFUN7hvqolMrrW4DDsEbXU=
+github.com/Carsen/PaxxNest/Manager v0.0.0-20240807171902-bc321f68bd01 h1:slRewTrD/B+Xubnizc5L2Sz8vDY7fjkhnelyPjzBhuY=
+github.com/Carsen/PaxxNest/Manager v0.0.0-20240807171902-bc321f68bd01/go.mod h1:fO1TKF9yp8LA+P0hKjN1AMFUN7hvqolMrrW4DDsEbXU=
