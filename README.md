@@ -20,7 +20,7 @@ PaxxNest is a universal package manager written in Golang. It iterates through a
 
 2. Clone the Repository:
 
-`git clone <https://github.com/Carsen/PaxxNest.git>`
+`git clone https://github.com/Carsen/PaxxNest.git`
 
 3. Navigate to the Source Directory:
 
