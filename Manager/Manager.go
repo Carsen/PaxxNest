@@ -100,7 +100,6 @@ func (m *ManagerList) RemovePackage(pack string) {
 // Integration with HomeBrew Package Manager
 type BrewMan struct{}
 
-// Brew List
 func (s BrewMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("brew", "list")
 	output, err := cmd.Output()
@@ -110,7 +109,6 @@ func (s BrewMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check if 'Package' was installed using Brew List
 func (s BrewMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("brew", "list", pack)
 	_, err := cmd.CombinedOutput()
@@ -120,7 +118,6 @@ func (s BrewMan) PkgIsInstalled(pack string) (bool, error) {
 	return true, nil
 }
 
-// Brew Install 'Package'
 func (s BrewMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("brew", "install", pack)
 	output, err := cmd.Output()
@@ -130,7 +127,6 @@ func (s BrewMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Brew Remove 'Package'
 func (s BrewMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("brew", "remove", pack)
 	output, err := cmd.Output()
@@ -143,7 +139,6 @@ func (s BrewMan) PkgRemove(pack string) ([]string, error) {
 // Integration with Snap Package Manager
 type SnapMan struct{}
 
-// Snap List
 func (s SnapMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("snap", "list")
 	output, err := cmd.Output()
@@ -153,7 +148,6 @@ func (s SnapMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check is 'Package' is installed using Snap List
 func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("snap", "list", pack)
 	_, err := cmd.CombinedOutput()
@@ -163,7 +157,6 @@ func (s SnapMan) PkgIsInstalled(pack string) (bool, error) {
 	return true, err
 }
 
-// Snap Install 'Package'
 func (s SnapMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("snap", "install", pack)
 	output, err := cmd.Output()
@@ -173,7 +166,6 @@ func (s SnapMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Snap Remove 'Package'
 func (s SnapMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("snap", "remove", pack)
 	output, err := cmd.Output()
@@ -186,7 +178,6 @@ func (s SnapMan) PkgRemove(pack string) ([]string, error) {
 // Integration with PacMan Package Manager
 type PacMan struct{}
 
-// PacMan List
 func (s PacMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("pacman", "-Q")
 	output, err := cmd.Output()
@@ -196,7 +187,6 @@ func (s PacMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check is 'Package' is installed using Pacman List
 func (s PacMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("pacman", "-Q", pack)
 	_, err := cmd.CombinedOutput()
@@ -206,7 +196,6 @@ func (s PacMan) PkgIsInstalled(pack string) (bool, error) {
 	return true, nil
 }
 
-// Pacman Install 'Package'
 func (s PacMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("pacman", "-S", pack)
 	output, err := cmd.Output()
@@ -216,7 +205,6 @@ func (s PacMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Pacman Remove 'Package'
 func (s PacMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("pacman", "-R", pack)
 	output, err := cmd.Output()
@@ -229,7 +217,6 @@ func (s PacMan) PkgRemove(pack string) ([]string, error) {
 // Integration with Winget Manager
 type WingetMan struct{}
 
-// Winget List
 func (s WingetMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("winget", "list")
 	output, err := cmd.Output()
@@ -239,7 +226,6 @@ func (s WingetMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check is 'Package' is installed using Winget List
 func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("winget", "list", pack)
 	_, err := cmd.CombinedOutput()
@@ -249,7 +235,6 @@ func (s WingetMan) PkgIsInstalled(pack string) (bool, error) {
 	return true, nil
 }
 
-// Winget Install 'Package'
 func (s WingetMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("winget", "install", pack, "--accept-source-agreements --accept-package-agreements")
 	output, err := cmd.Output()
@@ -259,7 +244,6 @@ func (s WingetMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Winget Remove 'Package'
 func (s WingetMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("winget", "remove", pack)
 	output, err := cmd.Output()
@@ -272,7 +256,6 @@ func (s WingetMan) PkgRemove(pack string) ([]string, error) {
 // Integration with Scoop Manager
 type ScoopMan struct{}
 
-// Scoop List
 func (s ScoopMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("scoop", "list")
 	output, err := cmd.Output()
@@ -282,7 +265,6 @@ func (s ScoopMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check is 'Package' is installed using Scoop List
 func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("scoop", "list", pack)
 	output, err := cmd.CombinedOutput()
@@ -292,7 +274,6 @@ func (s ScoopMan) PkgIsInstalled(pack string) (bool, error) {
 	return len(string(output)) > 50, nil
 }
 
-// Scoop Install 'Package'
 func (s ScoopMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("scoop", "install", pack)
 	output, err := cmd.Output()
@@ -302,7 +283,6 @@ func (s ScoopMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Scoop Remove 'Package'
 func (s ScoopMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("scoop", "uninstall", pack)
 	output, err := cmd.Output()
@@ -315,7 +295,6 @@ func (s ScoopMan) PkgRemove(pack string) ([]string, error) {
 // Integration with Chocolatey manager
 type ChocoMan struct{}
 
-// Choco List
 func (s ChocoMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("choco", "list", "--local-only")
 	output, err := cmd.Output()
@@ -325,7 +304,6 @@ func (s ChocoMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check if 'Package' is installed using Choco List
 func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("choco", "list", pack, "--local-only")
 	_, err := cmd.Output()
@@ -335,7 +313,6 @@ func (s ChocoMan) PkgIsInstalled(pack string) (bool, error) {
 	return true, nil
 }
 
-// Choco install 'Package'
 func (s ChocoMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("choco", "install", pack)
 	output, err := cmd.Output()
@@ -345,7 +322,6 @@ func (s ChocoMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Choco remove 'Package'
 func (s ChocoMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("choco", "uninstall", pack)
 	output, err := cmd.Output()
@@ -358,7 +334,6 @@ func (s ChocoMan) PkgRemove(pack string) ([]string, error) {
 // Integration with NPM manager
 type NpmMan struct{}
 
-// NPM List
 func (s NpmMan) PkgListInstalled() ([]string, error) {
 	cmd := exec.Command("npm", "list")
 	output, err := cmd.Output()
@@ -368,7 +343,6 @@ func (s NpmMan) PkgListInstalled() ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// Check if 'Package' is installed using NPM List
 func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
 	cmd := exec.Command("npm", "list", pack)
 	_, err := cmd.Output()
@@ -378,7 +352,6 @@ func (s NpmMan) PkgIsInstalled(pack string) (bool, error) {
 	return true, nil
 }
 
-// NPM install 'Package'
 func (s NpmMan) PkgInstall(pack string) ([]string, error) {
 	cmd := exec.Command("npm", "install", pack)
 	output, err := cmd.Output()
@@ -388,9 +361,48 @@ func (s NpmMan) PkgInstall(pack string) ([]string, error) {
 	return []string{string(output)}, nil
 }
 
-// NPM remove 'Package'
 func (s NpmMan) PkgRemove(pack string) ([]string, error) {
 	cmd := exec.Command("npm", "uninstall", pack)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+// Integration with NIX Manager
+type NixMan struct{}
+
+func (s NixMan) PkgListInstalled() ([]string, error) {
+	cmd := exec.Command("nix-env --query --installed")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+func (s NixMan) PkgIsInstalled(pack string) (bool, error) {
+	cmd := exec.Command("nix-env -qaP", pack)
+	_, err := cmd.Output()
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
+func (s NixMan) PkgInstall(pack string) ([]string, error) {
+	command := fmt.Sprintf("nix-env -iA nixpkgs.%s", pack)
+	cmd := exec.Command(command)
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	return []string{string(output)}, nil
+}
+
+func (s NixMan) PkgRemove(pack string) ([]string, error) {
+	cmd := exec.Command("nix-env -e", pack)
 	output, err := cmd.Output()
 	if err != nil {
 		return nil, err
