@@ -61,7 +61,7 @@ func (m *ManagerList) InstallPackage(pack string) {
 		fmt.Printf("Installing '%s', via manager '%s'\n", pack, name)
 		output, err := manager.PkgInstall(pack)
 		if err != nil {
-			fmt.Printf("Failed to install '%s' using manager '%s': %v. \n Trying Next", pack, name, err)
+			fmt.Printf("Failed to install '%s' using manager '%s': %v. \nTrying Next...\n", pack, name, err)
 			continue
 		}
 
