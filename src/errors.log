@@ -8,3 +8,4 @@ Error: 2024/08/07 11:16:50 ErrLog.go:21: exec: "brew": executable file not found
 Error: 2024/08/07 11:16:50 ErrLog.go:21: exec: "snap": executable file not found in %PATH%
 Error: 2024/08/07 11:16:50 ErrLog.go:21: exec: "pacman": executable file not found in %PATH%
 Error: 2024/08/07 11:17:02 ErrLog.go:21: exec: "choco": executable file not found in %PATH%
+Error: 2024/08/07 11:46:01 ErrLog.go:21: exit status 0x8a150014

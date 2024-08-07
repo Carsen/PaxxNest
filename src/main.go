@@ -25,11 +25,13 @@ func main() {
 			mgr.ListPackages()
 		}
 		if choice == "i" || choice == "I" {
+			fmt.Print("Please enter a package name: ")
 			var whichpkg string
 			fmt.Scanln(&whichpkg)
 			mgr.InstallPackage(whichpkg)
 		}
 		if choice == "r" || choice == "R" {
+			fmt.Print("Please enter a package name: ")
 			var whichpkg string
 			fmt.Scanln(&whichpkg)
 			mgr.RemovePackage(whichpkg)
