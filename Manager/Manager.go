@@ -20,14 +20,12 @@ type ManagerList struct {
 	managers map[string]PkgMgrOps
 }
 
-// Create new instance of ManagerList struct
 func NewManager() *ManagerList {
 	return &ManagerList{
 		managers: make(map[string]PkgMgrOps),
 	}
 }
 
-// Add a manager to ManagerList
 func (m *ManagerList) AddManager(name string, manager PkgMgrOps) {
 	m.managers[name] = manager
 }

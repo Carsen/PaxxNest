@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"log"
 
+	"github.com/Carsen/PaxxNest/ErrLog"
 	"go.mills.io/bitcask/v2"
 )
 
@@ -13,7 +14,7 @@ func CheckForKey(userk []byte) (bool, error) {
 	db, err := bitcask.Open("./DB", bitcask.WithOpenReadonly(true))
 	defer db.Close()
 	if err != nil {
-		log.Fatal(err)
+		ErrLog.LogErr(err)
 		checker = false
 		return checker, err
 	}
@@ -27,7 +28,7 @@ func ValueMatchesKey(userk []byte, userp []byte) (bool, error) {
 	db, err := bitcask.Open("./DB", bitcask.WithOpenReadonly(true))
 	defer db.Close()
 	if err != nil {
-		log.Fatal(err)
+		ErrLog.LogErr(err)
 		checker = false
 		return checker, err
 	}
@@ -46,7 +47,7 @@ func NewKeyValue(userk []byte, userp []byte) error {
 	db, err := bitcask.Open("./DB", bitcask.WithOpenReadonly(false))
 	defer db.Close()
 	if err != nil {
-		log.Fatal(err)
+		ErrLog.LogErr(err)
 		return err
 	}
 	db.Put(userk, userp)

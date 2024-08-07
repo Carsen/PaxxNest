@@ -3,14 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/Carsen/PaxxNest/Login"
 	"github.com/Carsen/PaxxNest/Manager"
 )
 
 func main() {
-	switch Login.Login(true) {
-	case true:
-		fmt.Println("Hello!\n")
 		mgr := Manager.NewManager()
 		mgr.AddManager("brew", Manager.BrewMan{})        //	Uncomment this line for Homebrew integration
 		mgr.AddManager("snap", Manager.SnapMan{})        //	Uncomment this line for Snap integration
@@ -38,5 +34,4 @@ func main() {
 			fmt.Scanln(&whichpkg)
 			mgr.RemovePackage(whichpkg)
 		}
-	}
 }
