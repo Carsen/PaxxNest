@@ -77,7 +77,7 @@ func (m *ManagerList) RemovePackage(pack string) {
 	for name, manager := range m.managers {
 		installed, err := manager.PkgIsInstalled(pack)
 		if err != nil {
-			ErrLog.LogErr(serr)
+			ErrLog.LogErr(err)
 			continue
 		}
 
