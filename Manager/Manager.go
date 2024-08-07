@@ -52,13 +52,12 @@ func (m *ManagerList) InstallPackage(pack string) {
 		if err != nil {
 			ErrLog.LogErr(err)
 		}
-
+		fmt.Printf("Trying to install '%s' via manager '%s'.\n", pack, name)
 		if installed {
 			fmt.Printf("Package '%s' is already installed via manager '%s'.\n", pack, name)
 			return
 		}
 
-		fmt.Printf("Installing '%s', via manager '%s'\n", pack, name)
 		output, err := manager.PkgInstall(pack)
 		if err != nil {
 			fmt.Printf("Failed to install '%s' using manager '%s': %v. \nTrying Next...\n", pack, name, err)
@@ -76,17 +75,15 @@ func (m *ManagerList) InstallPackage(pack string) {
 func (m *ManagerList) RemovePackage(pack string) {
 	for name, manager := range m.managers {
 		installed, err := manager.PkgIsInstalled(pack)
+		fmt.Printf("Trying to remove '%s', via manager '%s'.\n", pack, name)
 		if err != nil {
 			ErrLog.LogErr(err)
 			continue
 		}
-
 		if !installed {
 			fmt.Printf("Package '%s' is not currently installed.", pack)
 			return
 		}
-
-		fmt.Printf("Removing '%s', via manager '%s'.\n", pack, name)
 		output, err := manager.PkgInstall(pack)
 		if err != nil {
 			fmt.Printf("Failed to remove '%s' using manager '%s': %v.\n Trying next", pack, name, err)
