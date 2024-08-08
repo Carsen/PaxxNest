@@ -4,7 +4,7 @@ PaxxNest is a universal package manager written in Golang. It iterates through a
 
 <h4>Please Note: </h4>
 
-<p>PaxxNest is very new and the development team is limited. It is expected that some functions may not work as expected. Please have patience as we continue to build. Thanks!</p>
+<p>PaxxNest is very new and the development team is limited. It is expected that some functions may not work as intended. Please have patience as we continue to build. Thanks!</p>
 
 <h2>Features:</h2>
 
